@@ -1,4 +1,4 @@
-package firstniosocket;
+package niosocket;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
+
+import singleclassutil.SimpleLogger;
 
 public class FirstNoiServer {
 

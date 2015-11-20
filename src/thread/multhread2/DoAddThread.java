@@ -1,5 +1,4 @@
 package multhread2;
-import multhread.Num;
 public class DoAddThread extends Thread{
 	private Num num = new Num();
 	public DoAddThread(Runnable runnable){

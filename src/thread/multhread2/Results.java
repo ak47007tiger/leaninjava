@@ -4,8 +4,6 @@ import java.util.Hashtable;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import multhread.Num;
-
 public class Results {
 	private static Results results;
 	private Results() {

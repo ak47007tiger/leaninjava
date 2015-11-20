@@ -1,4 +1,4 @@
-package firstniosocket;
+package singleclassutil;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package firstniosocket;
+package niosocket;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;

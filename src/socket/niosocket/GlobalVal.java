@@ -1,4 +1,4 @@
-package firstniosocket;
+package niosocket;
 
 public interface GlobalVal {
 

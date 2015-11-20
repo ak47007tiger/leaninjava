@@ -1,4 +1,4 @@
-package multhread;
+package multhread2;
 
 public class Num {
 
