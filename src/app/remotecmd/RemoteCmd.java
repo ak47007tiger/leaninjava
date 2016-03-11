@@ -111,6 +111,6 @@ public class RemoteCmd {
 		}
 	}
 	public static void main(String[] args) {
-		remoteCmd0();
+		remoteCmd();
 	}
 }

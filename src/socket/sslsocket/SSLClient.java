@@ -21,8 +21,8 @@ public class SSLClient {
     private static final String DEFAULT_HOST                    = "127.0.0.1";
     private static final int    DEFAULT_PORT                    = 7777;
 
-    private static final String CLIENT_KEY_STORE_PASSWORD       = "123456";
-    private static final String CLIENT_TRUST_KEY_STORE_PASSWORD = "123456";
+    private static final String CLIENT_KEY_STORE_PASSWORD       = "123123";
+    private static final String CLIENT_TRUST_KEY_STORE_PASSWORD = "123123";
 
     private SSLSocket           sslSocket;
 
@@ -81,9 +81,9 @@ public class SSLClient {
 
             KeyStore ks = KeyStore.getInstance("JKS");
             KeyStore tks = KeyStore.getInstance("JKS");
-
-            ks.load(new FileInputStream("E:/kclient.keystore"), CLIENT_KEY_STORE_PASSWORD.toCharArray());
-            tks.load(new FileInputStream("E:/tclient.keystore"), CLIENT_TRUST_KEY_STORE_PASSWORD.toCharArray());
+            String kspath = "E:/projects/openshift/tomcat7.git/src/main/webapp/WEB-INF/config/key20151119.jks";
+            ks.load(new FileInputStream(kspath), CLIENT_KEY_STORE_PASSWORD.toCharArray());
+            tks.load(new FileInputStream(kspath), CLIENT_TRUST_KEY_STORE_PASSWORD.toCharArray());
 
             kmf.init(ks, CLIENT_KEY_STORE_PASSWORD.toCharArray());
             tmf.init(tks);

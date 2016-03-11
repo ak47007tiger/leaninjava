@@ -6,18 +6,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.security.KeyStore;
-import java.security.Principal;
-import java.security.PrivateKey;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509KeyManager;
-import javax.net.ssl.X509TrustManager;
 
 /*********************************************************************************************************************** 
  * <ul> 
@@ -38,8 +31,8 @@ public class SSLServer {
 
     private static final int    DEFAULT_PORT                    = 7777;
 
-    private static final String SERVER_KEY_STORE_PASSWORD       = "123456";
-    private static final String SERVER_TRUST_KEY_STORE_PASSWORD = "123456";
+    private static final String SERVER_KEY_STORE_PASSWORD       = "123123";
+    private static final String SERVER_TRUST_KEY_STORE_PASSWORD = "123123";
 
     private SSLServerSocket     serverSocket;
 
@@ -104,9 +97,9 @@ public class SSLServer {
 
             KeyStore ks = KeyStore.getInstance("JKS");
             KeyStore tks = KeyStore.getInstance("JKS");
-
-            ks.load(new FileInputStream("E:/kserver.keystore"), SERVER_KEY_STORE_PASSWORD.toCharArray());
-            tks.load(new FileInputStream("E:/tserver.keystore"), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
+            String kspath = "E:/projects/openshift/tomcat7.git/src/main/webapp/WEB-INF/config/key20151119.jks";
+            ks.load(new FileInputStream(kspath), SERVER_KEY_STORE_PASSWORD.toCharArray());
+            tks.load(new FileInputStream(kspath), SERVER_TRUST_KEY_STORE_PASSWORD.toCharArray());
 
             kmf.init(ks, SERVER_KEY_STORE_PASSWORD.toCharArray());
             tmf.init(tks);
@@ -118,63 +111,5 @@ public class SSLServer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new X509KeyManager() {
-			
-			@Override
-			public String[] getServerAliases(String keyType, Principal[] issuers) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public PrivateKey getPrivateKey(String alias) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public String[] getClientAliases(String keyType, Principal[] issuers) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public X509Certificate[] getCertificateChain(String alias) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public String chooseServerAlias(String keyType, Principal[] issuers,
-					Socket socket) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public String chooseClientAlias(String[] keyType, Principal[] issuers,
-					Socket socket) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
-        new SecureRandom();
-        new X509TrustManager() {
-			
-			@Override
-			public X509Certificate[] getAcceptedIssuers() {
-				return null;
-			}
-			
-			@Override
-			public void checkServerTrusted(X509Certificate[] arg0, String arg1)
-					throws CertificateException {
-			}
-			
-			@Override
-			public void checkClientTrusted(X509Certificate[] arg0, String arg1)
-					throws CertificateException {
-			}
-		};
     }
 }  
