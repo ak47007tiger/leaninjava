@@ -14,7 +14,7 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class IpToPosition {
-	final static String funcUrl = "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip="; 
+	final static String funcUrl = "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json"; 
 	private JSONObject jsonObject;
 	public void setIp(String ip){
 		URL url;
@@ -23,7 +23,6 @@ public class IpToPosition {
 		StringBuffer sb = new StringBuffer();
 		try {
 			url = new URL(funcUrl + ip);
-//			url = new URL("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js");
 			uc = url.openConnection();
 			is = uc.getInputStream();
 			byte[] buf = new byte[1024];
@@ -39,8 +38,9 @@ public class IpToPosition {
 			e.printStackTrace();
 		}
 		//两边包括大括号才能被fastjson识别使用
-		String text = null;
-		text = sb.substring(sb.indexOf("{"), sb.lastIndexOf("}") + 1);
+		String text = sb.toString();
+		text = text.substring(text.indexOf('{'),text.lastIndexOf('}') + 1);
+		System.out.println(text);
 		jsonObject = JSON.parseObject(text);
 	}
 	public Object getValue(String name){
@@ -50,11 +50,6 @@ public class IpToPosition {
 		IpToPosition ipToPosition = new IpToPosition();
 		ipToPosition.setIp("192.168.1.102");
 		System.out.println(ipToPosition.getValue("country"));
-		System.out.println(ipToPosition.getValue("kk"));
-		try {
-			Class.forName("a");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		System.out.println(ipToPosition.getValue("city"));
 	}
 }
